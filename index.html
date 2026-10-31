@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Tech Codex | Web Design, Development &amp; SEO – Bahawalpur</title>
+<meta name="description" content="World Tech Codex builds websites, web applications and AI-powered solutions for businesses in Bahawalpur and beyond.">
+<link rel="icon" href="images/logo.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--bg:#04060c;--card:#0b111e;--line:#17233a;--b:#1e90ff;--c:#22e5ff;--t:#e8f0fb;--m:#8b9bb4}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font:16px/1.7 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,h4,.btn{font-family:Sora,sans-serif}
+img{max-width:100%;display:block}
+[data-go],[data-ext],[data-apply]{cursor:pointer}
+:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+.w{max-width:1180px;margin:auto;padding:0 20px}
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(4,6,12,.96);border-bottom:1px solid var(--line)}
+header.sc{box-shadow:0 2px 10px rgba(0,0,0,.4)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:70px;gap:12px}
+.logo img{height:44px;max-width:60vw;object-fit:contain;transition:.3s}.logo:hover img{transform:scale(1.03)}.lt{font:800 20px Sora;color:var(--t)}.lt span{color:var(--c);font-size:13px;letter-spacing:2px}
+nav{display:flex;align-items:center;gap:2px}
+.nl{position:relative}
+.nl>a{display:block;padding:8px 14px;border-radius:8px;font-weight:500;color:var(--t);transition:.25s}
+.nl>a.on{color:var(--c);background:rgba(34,229,255,.08)}@media(hover:hover){.nl>a:hover{color:var(--c)}}
+.dd{position:absolute;top:100%;left:0;min-width:260px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.2s;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.nl:hover .dd,.nl:has(a:focus-visible) .dd{opacity:1;visibility:visible;transform:none}
+.dd a{display:block;padding:10px 14px;border-radius:8px;color:var(--m);transition:.2s}
+.dd a:hover{background:rgba(30,144,255,.15);color:var(--c);padding-left:20px}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--t);width:44px;height:44px;border-radius:10px;font-size:20px;cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:999px;border:0;font-weight:700;font-size:15px;background:var(--c);color:#02060f;transition:.25s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn.o{background:transparent;color:var(--t);border:1.5px solid var(--b)}.btn.o:hover{background:rgba(30,144,255,.15)}
+/* sections */
+.s{padding:84px 0}.s:nth-of-type(even){background:linear-gradient(180deg,transparent,rgba(30,144,255,.05),transparent)}
+h2{font-size:clamp(28px,4vw,40px);line-height:1.2;font-weight:800;margin-bottom:10px}
+.sub{color:var(--m);max-width:620px;margin-bottom:40px}
+.hero{min-height:80vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 30%,rgba(30,144,255,.14),transparent 50%)}
+.hero h1{font-size:clamp(34px,6vw,66px);line-height:1.08;font-weight:800;margin-bottom:20px;max-width:760px}
+.hero h1 span{background:linear-gradient(90deg,var(--b),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--m);max-width:540px;margin-bottom:30px;font-size:18px}
+.orb{position:absolute;right:-6%;top:50%;width:min(480px,70vw);aspect-ratio:1;translate:0 -50%;border-radius:50%;border:1px solid rgba(34,229,255,.25);background:repeating-radial-gradient(circle,transparent 0 38px,rgba(30,144,255,.12) 39px 40px);animation:spin 60s linear infinite;opacity:.6}
+.orb::after{content:"</>";position:absolute;inset:0;display:grid;place-items:center;font:700 90px Sora;color:var(--c);opacity:.6;animation:spin 60s linear infinite reverse}
+@keyframes spin{to{transform:translateY(0) rotate(360deg)}}
+.hero .w{position:relative;z-index:2;width:100%}
+.ban{padding:70px 0 50px;text-align:center;background:radial-gradient(circle at 50% 0,rgba(30,144,255,.25),transparent 60%);border-bottom:1px solid var(--line)}
+.ban h1{font-size:clamp(30px,5vw,50px);font-weight:800}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;transition:.35s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-5px);border-color:var(--c)}
+.card h3{margin:14px 0 8px;font-size:19px}.card p{color:var(--m);font-size:15px}
+.ic{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-size:22px;color:var(--c);background:rgba(30,144,255,.14);transition:.35s}
+.card:hover .ic{background:var(--c);color:#02060f}
+.ph{position:relative;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,#0a1a33,#06101f);color:rgba(34,229,255,.55);font-size:46px}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;transition:.6s}
+.card:hover .ph img{transform:scale(1.04)}
+.ph.sv{aspect-ratio:16/10;border-radius:12px;margin-bottom:16px}
+.ph.av{width:130px;height:130px;border-radius:50%;margin:0 auto 14px;border:3px solid var(--b)}
+.tm{text-align:center}.tm span{color:var(--c);font-size:14px}
+.ph.pf{aspect-ratio:4/3;margin:-26px -26px 16px;border-radius:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.two p{color:var(--m);margin-bottom:14px}
+.ck{list-style:none;margin:16px 0 24px}.ck li{padding:6px 0 6px 30px;position:relative;color:var(--t)}
+.ck li::before{content:"\f00c";font:900 13px "Font Awesome 6 Free";color:var(--c);position:absolute;left:0;top:10px}
+.st{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.st .card{text-align:center}.st b{display:block;font:800 34px Sora;color:var(--c)}
+/* pricing */
+.pt{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:20px;align-items:stretch}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 24px;position:relative;transition:.35s;display:flex;flex-direction:column}
+.pc:hover{transform:translateY(-5px);border-color:var(--c)}
+.pc.pop{background:#0d1d38;border-color:var(--b)}
+.pc h3{font-size:22px}.pc .bd{position:absolute;top:-13px;left:50%;translate:-50% 0;background:linear-gradient(90deg,var(--b),var(--c));color:#02060f;font:700 12px Sora;padding:4px 14px;border-radius:99px;white-space:nowrap}
+.pp{margin-top:8px;font:800 36px Sora;color:var(--c);line-height:1.2}.pp small{font:500 14px Inter;color:var(--m);margin-left:4px}
+.pc ul{list-style:none;margin:18px 0 22px;flex:1}.pc li{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.pc li b{font-weight:500;text-align:right;color:var(--c)}.pc .fa-xmark{color:#ff4d6a}
+.pc .btn{justify-content:center}
+.pn{color:var(--m);margin-bottom:34px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center}
+/* contact */
+.ci{display:flex;gap:14px;align-items:center;padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--card);margin-bottom:12px;transition:.3s}
+.ci:hover{border-color:var(--c);transform:translateX(4px)}.ci small{color:var(--m);display:block;line-height:1.3}
+.map{width:100%;height:100%;min-height:380px;border:0;border-radius:18px;filter:invert(.92) hue-rotate(180deg) saturate(.8)}
+.so{display:flex;gap:10px;flex-wrap:wrap}
+.so a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--t);font-size:18px;transition:.3s}
+.so a:hover{background:var(--c);color:#02060f;transform:translateY(-3px)}
+footer{border-top:1px solid var(--line);background:#02040a;padding:60px 0 20px;margin-top:40px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:30px}
+footer h4{margin-bottom:14px}footer p,footer .fl a{color:var(--m);font-size:15px}
+.fl a{display:block;padding:4px 0;transition:.2s}.fl a:hover{color:var(--c);padding-left:6px}.fl a i{width:18px;color:var(--c)}
+.cp{text-align:center;color:var(--m);font-size:14px;border-top:1px solid var(--line);margin-top:36px;padding-top:18px}
+/* modal */
+.md{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:grid;place-items:center;z-index:99;opacity:0;visibility:hidden;transition:.3s;padding:20px}
+.md.on{opacity:1;visibility:visible}
+.mb{background:var(--card);border:1px solid var(--b);border-radius:20px;padding:34px;max-width:440px;width:100%;text-align:center;transform:scale(.9);transition:.3s}
+.md.on .mb{transform:none}.mb i.big{font-size:44px;color:var(--c);margin-bottom:14px}.mb p{color:var(--m);margin:10px 0 22px}
+.mb .x{display:block;margin:14px auto 0;background:none;border:0;color:var(--m);cursor:pointer;font-size:14px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}.reveal.in{opacity:1;transform:none}
+@media(max-width:1180px){.nl>a{padding:8px 9px;font-size:14px}.hd .btn{padding:10px 16px}}
+@media(max-width:1000px){
+.burger{display:block}.hd>.btn.ap{display:none}.mob{display:block!important}
+nav{position:absolute;top:100%;left:0;right:0;max-height:calc(100vh - 70px);max-height:calc(100dvh - 70px);overflow-y:auto;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:12px 20px 20px;gap:0;opacity:0;visibility:hidden;transform:translateY(-8px);transition:.25s}
+nav.open{opacity:1;visibility:visible;transform:none}.nl>a{padding:12px 10px}
+.dd{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:none;padding:0 0 6px 14px;min-width:0}.dd a:hover{padding-left:14px}
+.two,.fg{grid-template-columns:1fr}.pt{grid-template-columns:1fr}.pc.pop,.pc.pop:hover{transform:none}
+.orb{opacity:.25}.s{padding:60px 0}}
+@media(max-width:560px){.s{padding:48px 0}.hero{min-height:70vh}.btn{padding:11px 20px}.hd{height:64px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header id="hd"><div class="w hd">
+  <a class="logo" data-go="home" tabindex="0" aria-label="World Tech Codex home"><img src="images/logo.png" alt="World Tech Codex" onerror="this.outerHTML='<b class=lt>WORLD <span>TECHCODEX</span></b>'"></a>
+  <nav id="nav"></nav>
+  <span class="btn ap" data-apply tabindex="0" role="button"><i class="fa-solid fa-briefcase"></i> Apply Now</span>
+  <button class="burger" id="bg" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+</div></header>
+<main id="app"></main>
+<footer><div class="w">
+  <div class="fg" id="ft"></div>
+  <div class="cp">© <span id="yr"></span> World Tech Codex. All rights reserved.</div>
+</div></footer>
+<div class="md" id="md"><div class="mb" id="mb"></div></div>
+
+<script>
+/* ===== SETTINGS: edit here ===== */
+const CFG={
+  hiring:false,                       // true = hiring open, false = no job right now
+  dates:"15 Nov 2026 – 30 Nov 2026",  // shown in popup when hiring is true
+  role:"Web Developer",
+  form:"https://forms.gle/CTeA76SgQujgSajM9",
+  phone:"+92 323 3527130",email:"worldtechcodex@gmail.com",addr:"Bahawalpur, Punjab, Pakistan"
+};
+const SOC=[["linkedin-in","https://www.linkedin.com/company/world-tech-codex","LinkedIn"],["facebook-f","https://www.facebook.com/share/18RxL5j8yD/","Facebook"],["instagram","https://www.instagram.com/world.tech.codex","Instagram"],["x-twitter","https://x.com/WorldTechCodex","X"],["tiktok","https://www.tiktok.com/@world.tech.codex","TikTok"]];
+const TEAM=[["Saad Durrani","Founder & CEO","owner.jpg"],["Halima Sadia","Manager","manager.jpg"],["","Web Developer","member1.jpg"],["","Web Designer","member2.jpg"],["","SEO Specialist","member3.jpg"]];
+const S=[
+{id:"svc-design",pr:"pr-design",ic:"laptop-code",img:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&q=70",t:"Web Design & Development",d:"Custom websites for every industry: business, dental and medical, education, restaurants, portfolios and online stores. Every site is designed and coded from scratch, without Shopify.",f:["Unique design for your industry","WordPress, custom themes & plugins","Mobile responsive on all devices","SEO-ready structure and fast loading","E-commerce built to your needs"]},
+{id:"svc-maint",pr:"pr-maint",ic:"screwdriver-wrench",img:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=70",t:"Web Maintenance",d:"We keep your website secure, fast and up to date, so you can focus on running your business.",f:["Regular updates and backups","Security monitoring and malware cleanup","Bug fixes and speed optimisation","Content changes on request","Uptime checks and monthly reports"]},
+{id:"svc-app",pr:"pr-app",ic:"cubes",img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=70",t:"Web Application",d:"Custom software, dashboards and AI-powered automation built with Python and modern web tools.",f:["Python and web application development","Admin dashboards and user logins","AI-powered solutions and automation","API and third-party integration","Scalable, secure database design"]}];
+const Y='<i class="fa-solid fa-check"></i>',N='<i class="fa-solid fa-xmark"></i>';
+const P={
+"pr-design":{t:"Web Design & Development",rows:["Website Pages","Logo","Mobile Responsive","Website Design","SEO Compatibility","Complete Project"],tiers:[["Simple",["4-6","Free Text Logo",1,"Basic",0,"4 Weeks"]],["Most Popular",["7-10","Logo Enhancement (Basic)",1,"Standard",1,"6 Weeks"]],["Standard",["11-20","Logo Enhancement (Advance)",1,"Advance",1,"12 Weeks"]]]},
+"pr-maint":{t:"Web Maintenance",rows:["Updates & Backups","Security Monitoring","Bug Fixes","Support","Monthly Report","Billing"],tiers:[["Simple",["Monthly","Basic","2 / month","Email",0,"Monthly"]],["Most Popular",["Bi-weekly","Advanced","5 / month","Email + WhatsApp",1,"Monthly"]],["Standard",["Weekly","Advanced + Firewall","Unlimited","Priority Support",1,"Monthly"]]]},
+"pr-app":{t:"Web Application",rows:["Features","Admin Dashboard","User Login","Database","AI / Automation","Complete Project"],tiers:[["Simple",["Up to 5",1,1,"Basic",0,"6 Weeks"]],["Most Popular",["Up to 12",1,1,"Advanced",1,"10 Weeks"]],["Standard",["12+ Custom",1,1,"Advanced + Scaling",1,"16+ Weeks"]]]}};
+const PRICE={"pr-design":[["$150",""],["$299",""],["$699",""]],"pr-maint":[["$35","/ month"],["$99","/ month"],["$199","/ month"]],"pr-app":[["$499",""],["$1,299",""],["$2,999",""]]};
+const NAV=[["home","Home"],["about","About",[["about","About Us"],["team","Team"]]],["services","Services",S.map(s=>[s.id,s.t])],["pricing","Pricing",Object.keys(P).map(k=>[k,P[k].t])],["portfolio","Portfolio"],["contact","Contact"]];
+
+/* ===== helpers ===== */
+const $=s=>document.querySelector(s);
+const A=(go,txt,cls="")=>`<a data-go="${go}" class="${cls}" tabindex="0">${txt}</a>`;
+const B=(go,txt,cls="")=>`<span class="btn ${cls}" data-go="${go}" tabindex="0" role="link">${txt}</span>`;
+const ph=(cls,icon,src)=>`<div class="ph ${cls}"><i class="fa-solid fa-${icon}"></i><img src="${/^http/.test(src)?src:'images/'+src}" alt="" loading="lazy" onerror="this.remove()"></div>`;
+const sec=(t,sub,body)=>`<section class="s reveal"><div class="w"><h2>${t}</h2><p class="sub">${sub}</p>${body}</div></section>`;
+const ban=t=>`<div class="ban"><h1>${t}</h1></div>`;
+
+/* ===== sections ===== */
+const hero=()=>`<section class="hero"><div class="orb"></div><div class="w"><h1>We build websites and software that <span>grow your business</span></h1><p>World Tech Codex is a Bahawalpur technology company. We design, build and maintain websites, web applications and AI-powered tools.</p><div style="display:flex;gap:14px;flex-wrap:wrap">${B("services","Our Services")}${B("contact","Contact Us","o")}</div></div></section>`;
+const about=(full)=>sec("","",`<div class="two"><div><p>World Tech Codex is a technology solutions company helping businesses build, grow and succeed in the digital world. We deliver professional, reliable and innovative solutions tailored to your needs.</p><ul class="ck"><li>Website & e-commerce development</li><li>WordPress themes and plugins</li><li>Python, AI and automation</li></ul>${full?"":B("about","Read More")}</div><div class="st"><div class="card"><b>2-10</b>Team members</div><div class="card"><b>3</b>Core services</div><div class="card"><b>100%</b>Mobile responsive</div><div class="card"><b>24/7</b>Online support</div></div></div>`);
+const why=()=>sec("","",`<div class="g">${[["handshake","Clear communication","You know the plan, timeline and progress at every step."],["code","Clean, maintainable code","Websites that are easy to update and fast to load."],["bullseye","Built for your goals","Every project is custom, never an off-the-shelf template."]].map(x=>`<div class="card"><div class="ic"><i class="fa-solid fa-${x[0]}"></i></div><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("")}</div>`);
+const team=()=>sec("","",`<div class="g">${TEAM.map(m=>`<div class="card tm">${ph("av","user","team/"+m[2])}<h3>${m[0]}</h3><span>${m[1]}</span></div>`).join("")}</div>`);
+const svcCards=()=>sec("","",`<div class="g">${S.map(s=>`<div class="card">${ph("sv",s.ic,s.img)}<h3>${s.t}</h3><p>${s.d}</p><div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">${B(s.id,"Details")}${B(s.pr,"Pricing","o")}</div></div>`).join("")}</div>`);
+const svcDetail=s=>sec("","",`<div class="two">${ph("sv",s.ic,s.img).replace('ph sv','ph sv" style="font-size:80px')}<div><p>${s.d}</p><ul class="ck">${s.f.map(f=>`<li>${f}</li>`).join("")}</ul><div style="display:flex;gap:12px;flex-wrap:wrap">${B(s.pr,"View Pricing")}${B("contact","Get a Quote","o")}</div></div></div>`)+svcCards();
+/* prBlock(key, showSeeAll, hideTitle): hideTitle=1 removes the heading (used on single pricing pages, because the top banner already shows it) */
+const prBlock=(k,home,noTitle)=>{const p=P[k];return sec(noTitle?"":"Pricing: "+p.t,"",`<div class="pt">${p.tiers.map((t,i)=>`<div class="pc ${i==1?"pop":""}">${i==1?'<span class="bd">Most Popular</span>':""}<h3>${t[0]}</h3><div class="pp">${PRICE[k][i][0]}${PRICE[k][i][1]?`<small>${PRICE[k][i][1]}</small>`:""}</div><ul>${p.rows.map((r,j)=>{const v=t[1][j];return `<li><span>${r}</span><b>${v===1?Y:v===0?N:v}</b></li>`}).join("")}</ul>${B("contact","Get a Quote",i==1?"":"o")}</div>`).join("")}</div>${home?`<div style="text-align:center;margin-top:30px">${B("pricing","See All Pricing","o")}</div>`:""}`)};
+const PORT=[["The Crypto Airdrop","https://thecryptoairdrop.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Fthecryptoairdrop.com%2F?w=900&h=560"],["Home Decor Cozy","https://homedecorcozy.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Fhomedecorcozy.com%2F?w=900&h=560"],["Home Charm Decors","https://homecharmdecors.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Fhomecharmdecors.com%2Ffaqs%2F?w=1920&h=1080"],["Farzana Aqib","https://farzanaaqib.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Ffarzanaaqib.com%2F?w=900&h=560"],["Skyline Design","https://skylinedesign555.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Fskylinedesign555.com%2F?w=900&h=560"],["Reliable Finds Store","https://reliablefinds.store/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Freliablefinds.store%2F?w=900&h=560"],["Cerrium IT Consultant","https://cerrium.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcerrium.com%2F?w=900&h=560"]];
+const port=n=>sec("","",`<div class="g">${PORT.slice(0,n||PORT.length).map(x=>`<div class="card" data-ext="${x[1]}" tabindex="0" role="link">${ph("pf","globe",x[2])}<h3>${x[0]}</h3><p>${x[1].replace(/https?:\/\/|\//g,"")}</p><span style="color:var(--c);font-size:14px">View Website <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>`).join("")}</div>${n?`<div style="text-align:center;margin-top:30px">${B("portfolio","View All Work","o")}</div>`:""}`);
+const ext=(u,ic,l,v)=>`<div class="ci" data-ext="${u}" tabindex="0" role="link"><div class="ic"><i class="fa-${ic}"></i></div><div><small>${l}</small>${v}</div></div>`;
+const contact=()=>sec("","",`<div class="two" style="align-items:stretch"><div>${ext("tel:"+CFG.phone.replace(/ /g,""),"solid fa-phone","Phone",CFG.phone)}${ext("https://wa.me/"+CFG.phone.replace(/\D/g,""),"brands fa-whatsapp","WhatsApp",CFG.phone)}${ext("mailto:"+CFG.email,"solid fa-envelope","Email",CFG.email)}${ext("https://www.google.com/maps/search/Bahawalpur+Punjab+Pakistan","solid fa-location-dot","Address",CFG.addr)}<div class="so" style="margin:18px 0">${socials()}</div><span class="btn" data-apply tabindex="0" role="button"><i class="fa-solid fa-briefcase"></i> Apply Now</span></div><iframe class="map" title="Map" loading="lazy" src="https://maps.google.com/maps?q=Bahawalpur,Punjab,Pakistan&z=12&output=embed"></iframe></div>`);
+const socials=()=>SOC.map(s=>`<a data-ext="${s[1]}" tabindex="0" role="link" aria-label="${s[2]}"><i class="fa-brands fa-${s[0]}"></i></a>`).join("");
+
+/* ===== pages ===== */
+const R={home:()=>hero()+about()+svcCards()+prBlock("pr-design",1)+team()+port(3)+contact(),
+about:()=>ban("About Us")+about(1)+why(),team:()=>ban("Our Team")+team(),services:()=>ban("Our Services")+svcCards(),
+pricing:()=>ban("Pricing")+Object.keys(P).map(k=>prBlock(k)).join(""),portfolio:()=>ban("Portfolio")+port(),contact:()=>ban("Contact Us")+contact()};
+S.forEach(s=>R[s.id]=()=>ban(s.t)+svcDetail(s));
+Object.keys(P).forEach(k=>R[k]=()=>ban("Pricing: "+P[k].t)+prBlock(k,0,1));
+
+let io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12});
+function render(){
+  const r=(location.hash||"#home").slice(1);const k=R[r]?r:"home";
+  $("#app").innerHTML=R[k]();
+  document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
+  document.querySelectorAll("nav .nl>a").forEach(a=>{const n=NAV.find(x=>x[0]==a.dataset.go);a.classList.toggle("on",!!(a.dataset.go==k||(n&&n[2]&&n[2].some(c=>c[0]==k))))});
+  $("#nav").classList.remove("open");scrollTo({top:0,behavior:"instant"});
+  const t=(NAV.flatMap(n=>[[n[0],n[1]],...(n[2]||[])]).find(n=>n[0]==k)||[0,"Home"])[1];
+  document.title=(k=="home"?"":t+" | ")+"World Tech Codex";
+}
+$("#nav").innerHTML=NAV.map(n=>`<div class="nl">${A(n[0],n[1])}${n[2]?`<div class="dd">${n[2].map(c=>A(c[0],c[1])).join("")}</div>`:""}</div>`).join("")+`<div class="nl mob" style="display:none"><span class="btn" data-apply tabindex="0" role="button" style="margin-top:10px"><i class="fa-solid fa-briefcase"></i> Apply Now</span></div>`;
+$("#ft").innerHTML=`<div><img src="images/logo.png" alt="World Tech Codex" style="height:56px;margin-bottom:12px" onerror="this.outerHTML='<b class=lt>WORLD <span>TECHCODEX</span></b>'"><p>Websites, web applications and AI solutions for growing businesses.</p><div class="so" style="margin-top:16px">${socials()}</div></div>
+<div class="fl"><h4>Company</h4>${A("home","Home")}${A("about","About Us")}${A("team","Team")}${A("portfolio","Portfolio")}${A("contact","Contact")}</div>
+<div class="fl"><h4>Services</h4>${S.map(s=>A(s.id,s.t)).join("")}${A("pricing","Pricing")}</div>
+<div class="fl"><h4>Get in touch</h4><a data-ext="tel:${CFG.phone.replace(/ /g,"")}" tabindex="0" role="link"><i class="fa-solid fa-phone"></i> ${CFG.phone}</a><a data-ext="mailto:${CFG.email}" tabindex="0" role="link"><i class="fa-solid fa-envelope"></i> ${CFG.email}</a><a data-ext="https://www.google.com/maps/search/Bahawalpur+Punjab+Pakistan" tabindex="0" role="link"><i class="fa-solid fa-location-dot"></i> ${CFG.addr}</a></div>`;
+$("#yr").textContent=new Date().getFullYear();
+
+/* ===== events: no href, so no link preview shows at the bottom corner ===== */
+function act(t){t.blur&&t.blur();
+  if(t.dataset.go!==undefined){const g=t.dataset.go;location.hash===("#"+g)?render():location.hash=g}
+  else if(t.dataset.ext){const u=t.dataset.ext;/^(tel|mailto):/.test(u)?location.href=u:window.open(u,"_blank","noopener")}
+  else if(t.dataset.apply!==undefined)applyPop();
+}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-go],[data-ext],[data-apply]");if(t)act(t)});
+document.addEventListener("keydown",e=>{if(e.key==="Enter"){const t=e.target.closest("[data-go],[data-ext],[data-apply]");if(t)act(t)}if(e.key==="Escape")closePop()});
+$("#bg").onclick=()=>$("#nav").classList.toggle("open");
+addEventListener("hashchange",render);
+addEventListener("scroll",()=>$("#hd").classList.toggle("sc",scrollY>20),{passive:true});
+
+/* ===== apply popup ===== */
+function applyPop(){
+  $("#mb").innerHTML=CFG.hiring
+   ?`<i class="fa-solid fa-circle-check big"></i><h3>We are hiring</h3><p>Position: <b style="color:var(--t)">${CFG.role}</b><br>Apply between:<br><b style="color:var(--c)">${CFG.dates}</b></p><span class="btn" data-ext="${CFG.form}" tabindex="0" role="link"><i class="fa-brands fa-google"></i> Apply Now</span><button class="x" onclick="closePop()">Close</button>`
+   :`<i class="fa-solid fa-briefcase big"></i><h3>No job openings right now</h3><p>We are not hiring at the moment. Follow our social pages to hear about new openings.</p><div class="so" style="justify-content:center">${socials()}</div><button class="x" onclick="closePop()">Close</button>`;
+  $("#md").classList.add("on");
+}
+function closePop(){$("#md").classList.remove("on")}
+$("#md").addEventListener("click",e=>{if(e.target.id=="md")closePop()});
+render();
+</script>
+</body>
+</html>
