@@ -130,28 +130,13 @@ nav.open{opacity:1;visibility:visible;pointer-events:auto;transform:none}.nl>a{p
 </div></footer>
 <div class="md" id="md"><div class="mb" id="mb"></div></div>
 
+<script src="data/content.js"></script>
 <script>
-/* ===== SETTINGS: edit here ===== */
-const CFG={
-  hiring:false,                       // true = hiring open, false = no job right now
-  dates:"15 Nov 2026 – 30 Nov 2026",  // shown in popup when hiring is true
-  role:"Web Developer",
-  form:"https://forms.gle/CTeA76SgQujgSajM9",
-  phone:"+92 323 3527130",email:"worldtechcodex@gmail.com",addr:"Bahawalpur, Punjab, Pakistan"
-};
-const SOC=[["linkedin-in","https://www.linkedin.com/company/world-tech-codex","LinkedIn"],["facebook-f","https://www.facebook.com/share/18RxL5j8yD/","Facebook"],["instagram","https://www.instagram.com/world.tech.codex","Instagram"],["x-twitter","https://x.com/WorldTechCodex","X"],["tiktok","https://www.tiktok.com/@world.tech.codex","TikTok"]];
-/* images repo ke root me hain (koi folder nahi) */
-const TEAM=[["Saad Durrani","Founder & CEO","owner.jfif"],["Halima Sadia","Manager","manager.png"],["","Web Developer","team.webp"],["","Web Designer","team.webp"],["","SEO Specialist","team.webp"]];
-const S=[
-{id:"svc-design",pr:"pr-design",ic:"laptop-code",img:"webdesign.jpg",t:"Web Design & Development",d:"Custom websites for every industry: business, dental and medical, education, restaurants, portfolios and online stores. Every site is designed and coded from scratch, without Shopify.",f:["Unique design for your industry","WordPress, custom themes & plugins","Mobile responsive on all devices","SEO-ready structure and fast loading","E-commerce built to your needs"]},
-{id:"svc-maint",pr:"pr-maint",ic:"screwdriver-wrench",img:"webmantaince.jpeg",t:"Web Maintenance",d:"We keep your website secure, fast and up to date, so you can focus on running your business.",f:["Regular updates and backups","Security monitoring and malware cleanup","Bug fixes and speed optimisation","Content changes on request","Uptime checks and monthly reports"]},
-{id:"svc-app",pr:"pr-app",ic:"cubes",img:"webapp.png",t:"Web Application",d:"Custom software, dashboards and AI-powered automation built with Python and modern web tools.",f:["Python and web application development","Admin dashboards and user logins","AI-powered solutions and automation","API and third-party integration","Scalable, secure database design"]}];
+/* ===== CMS DATA: ye sab ab CMS se aata hai (data/content.js) ===== */
+const CFG={...__D.CFG,...__D.HIRE},TEAM=__D.TEAM,PG=__D.PG,PORT=__D.PORT,S=__D.S,
+SOC=__D.SOC.map(x=>[x.ic,x.url,x.name]),P={},PRICE={};
+Object.keys(__D.P).forEach(k=>{const p=__D.P[k];P[k]={t:p.t,rows:p.rows,tiers:p.tiers.map(t=>[t.name,t.values.map(v=>v==="yes"?1:v==="no"?0:v)])};PRICE[k]=p.tiers.map(t=>[t.price,t.per])});
 const Y='<i class="fa-solid fa-check"></i>',N='<i class="fa-solid fa-xmark"></i>';
-const P={
-"pr-design":{t:"Web Design & Development",rows:["Website Pages","Logo","Mobile Responsive","Website Design","SEO Compatibility","Complete Project"],tiers:[["Simple",["4-6","Free Text Logo",1,"Basic",0,"4 Weeks"]],["Most Popular",["7-10","Logo Enhancement (Basic)",1,"Standard",1,"6 Weeks"]],["Standard",["11-20","Logo Enhancement (Advance)",1,"Advance",1,"12 Weeks"]]]},
-"pr-maint":{t:"Web Maintenance",rows:["Updates & Backups","Security Monitoring","Bug Fixes","Support","Monthly Report","Billing"],tiers:[["Simple",["Monthly","Basic","2 / month","Email",0,"Monthly"]],["Most Popular",["Bi-weekly","Advanced","5 / month","Email + WhatsApp",1,"Monthly"]],["Standard",["Weekly","Advanced + Firewall","Unlimited","Priority Support",1,"Monthly"]]]},
-"pr-app":{t:"Web Application",rows:["Features","Admin Dashboard","User Login","Database","AI / Automation","Complete Project"],tiers:[["Simple",["Up to 5",1,1,"Basic",0,"6 Weeks"]],["Most Popular",["Up to 12",1,1,"Advanced",1,"10 Weeks"]],["Standard",["12+ Custom",1,1,"Advanced + Scaling",1,"16+ Weeks"]]]}};
-const PRICE={"pr-design":[["$150",""],["$299",""],["$699",""]],"pr-maint":[["$35","/ month"],["$99","/ month"],["$199","/ month"]],"pr-app":[["$499",""],["$1,299",""],["$2,999",""]]};
 const NAV=[["home","Home"],["about","About",[["about","About Us"],["team","Team"]]],["services","Services",S.map(s=>[s.id,s.t])],["pricing","Pricing",Object.keys(P).map(k=>[k,P[k].t])],["portfolio","Portfolio"],["contact","Contact"]];
 
 /* ===== helpers ===== */
@@ -160,18 +145,17 @@ const A=(go,txt,cls="")=>`<a data-go="${go}" class="${cls}" tabindex="0">${txt}<
 const B=(go,txt,cls="")=>`<span class="btn ${cls}" data-go="${go}" tabindex="0" role="link">${txt}</span>`;
 const ph=(cls,icon,src)=>`<div class="ph ${cls}"><i class="fa-solid fa-${icon}"></i><img src="${src}" alt="" loading="lazy" onerror="this.remove()"></div>`;
 const sec=(t,sub,body)=>`<section class="s reveal"><div class="w">${t?`<h2>${t}</h2>`:""}${sub?`<p class="sub">${sub}</p>`:""}${body}</div></section>`;
-const ban=t=>`<div class="ban"><h1>${t}</h1></div>`;
+const ban=t=>`<div class="ban"><h1>${PG.ban[t]||t}</h1></div>`;
 
 /* ===== sections ===== */
-const hero=()=>`<section class="hero"><div class="orb"></div><div class="w"><h1>We build websites and software that <span>grow your business</span></h1><p>World Tech Codex is a Bahawalpur technology company. We design, build and maintain websites, web applications and AI-powered tools.</p><div class="hb">${B("services","Our Services")}${B("contact","Contact Us","o")}</div></div></section>`;
-const about=(full)=>sec("","",`<div class="two"><div><p>World Tech Codex is a technology solutions company helping businesses build, grow and succeed in the digital world. We deliver professional, reliable and innovative solutions tailored to your needs.</p><ul class="ck"><li>Website & e-commerce development</li><li>WordPress themes and plugins</li><li>Python, AI and automation</li></ul>${full?"":B("about","Read More")}</div><div class="st"><div class="card"><b>2-10</b>Team members</div><div class="card"><b>3</b>Core services</div><div class="card"><b>100%</b>Mobile responsive</div><div class="card"><b>24/7</b>Online support</div></div></div>`);
-const why=()=>sec("","",`<div class="g">${[["handshake","Clear communication","You know the plan, timeline and progress at every step."],["code","Clean, maintainable code","Websites that are easy to update and fast to load."],["bullseye","Built for your goals","Every project is custom, never an off-the-shelf template."]].map(x=>`<div class="card"><div class="ic"><i class="fa-solid fa-${x[0]}"></i></div><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("")}</div>`);
-const team=()=>sec("","",`<div class="g">${TEAM.map(m=>`<div class="card tm">${ph("av","user",m[2])}${m[0]?`<h3>${m[0]}</h3><span>${m[1]}</span>`:`<h3>${m[1]}</h3>`}</div>`).join("")}</div>`);
+const hero=()=>`<section class="hero"><div class="orb"></div><div class="w"><h1>${PG.hero.h1} <span>${PG.hero.h1b}</span></h1><p>${PG.hero.p}</p><div class="hb">${B("services",PG.hero.b1)}${B("contact",PG.hero.b2,"o")}</div></div></section>`;
+const about=(full)=>sec("","",`<div class="two"><div><p>${PG.about.p}</p><ul class="ck">${PG.about.bullets.map(x=>`<li>${x}</li>`).join("")}</ul>${full?"":B("about","Read More")}</div><div class="st">${PG.stats.map(s=>`<div class="card"><b>${s.n}</b>${s.l}</div>`).join("")}</div></div>`);
+const why=()=>sec("","",`<div class="g">${PG.why.map(x=>`<div class="card"><div class="ic"><i class="fa-solid fa-${x.ic}"></i></div><h3>${x.t}</h3><p>${x.d}</p></div>`).join("")}</div>`);
+const team=()=>sec("","",`<div class="g">${TEAM.map(m=>`<div class="card tm">${ph("av","user",m.img)}${m.name?`<h3>${m.name}</h3><span>${m.role}</span>`:`<h3>${m.role}</h3>`}</div>`).join("")}</div>`);
 const svcCards=()=>sec("","",`<div class="g">${S.map(s=>`<div class="card">${ph("sv",s.ic,s.img)}<h3>${s.t}</h3><p>${s.d}</p><div class="ca">${B(s.id,"Details")}${B(s.pr,"Pricing","o")}</div></div>`).join("")}</div>`);
 const svcDetail=s=>sec("","",`<div class="two">${ph("sv big",s.ic,s.img)}<div><p>${s.d}</p><ul class="ck">${s.f.map(f=>`<li>${f}</li>`).join("")}</ul><div class="hb">${B(s.pr,"View Pricing")}${B("contact","Get a Quote","o")}</div></div></div>`)+svcCards();
 const prBlock=(k,home,noTitle)=>{const p=P[k];return sec(noTitle?"":"Pricing: "+p.t,"",`<div class="pt">${p.tiers.map((t,i)=>`<div class="pc ${i==1?"pop":""}">${i==1?'<span class="bd">Most Popular</span>':""}<h3>${t[0]}</h3><div class="pp">${PRICE[k][i][0]}${PRICE[k][i][1]?`<small>${PRICE[k][i][1]}</small>`:""}</div><ul>${p.rows.map((r,j)=>{const v=t[1][j];return `<li><span>${r}</span><b>${v===1?Y:v===0?N:v}</b></li>`}).join("")}</ul>${B("contact","Get a Quote",i==1?"":"o")}</div>`).join("")}</div>${home?`<div style="text-align:center;margin-top:30px">${B("pricing","See All Pricing","o")}</div>`:""}`)};
-const PORT=[["The Crypto Airdrop","https://thecryptoairdrop.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Fthecryptoairdrop.com%2F?w=900&h=560"],["Home Decor Cozy","https://homedecorcozy.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Fhomedecorcozy.com%2F?w=900&h=560"],["Home Charm Decors","https://homecharmdecors.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Fhomecharmdecors.com%2Ffaqs%2F?w=1920&h=1080"],["Farzana Aqib","https://farzanaaqib.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Ffarzanaaqib.com%2F?w=900&h=560"],["Skyline Design","https://skylinedesign555.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Fskylinedesign555.com%2F?w=900&h=560"],["Reliable Finds Store","https://reliablefinds.store/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Freliablefinds.store%2F?w=900&h=560"],["Cerrium IT Consultant","https://cerrium.com/","https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcerrium.com%2F?w=900&h=560"]];
-const port=n=>sec("","",`<div class="g">${PORT.slice(0,n||PORT.length).map(x=>`<div class="card" data-ext="${x[1]}" tabindex="0" role="link">${ph("pf","globe",x[2])}<h3>${x[0]}</h3><p>${x[1].replace(/https?:\/\/|\//g,"")}</p><span class="lk">View Website <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>`).join("")}</div>${n?`<div style="text-align:center;margin-top:30px">${B("portfolio","View All Work","o")}</div>`:""}`);
+const port=n=>sec("","",`<div class="g">${PORT.slice(0,n||PORT.length).map(x=>`<div class="card" data-ext="${x.url}" tabindex="0" role="link">${ph("pf","globe",x.img)}<h3>${x.title}</h3><p>${x.url.replace(/https?:\/\/|\//g,"")}</p><span class="lk">View Website <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>`).join("")}</div>${n?`<div style="text-align:center;margin-top:30px">${B("portfolio","View All Work","o")}</div>`:""}`);
 const ext=(u,ic,l,v)=>`<div class="ci" data-ext="${u}" tabindex="0" role="link"><div class="ic"><i class="fa-${ic}"></i></div><div><small>${l}</small>${v}</div></div>`;
 const contact=()=>sec("","",`<div class="two" style="align-items:stretch"><div>${ext("tel:"+CFG.phone.replace(/ /g,""),"solid fa-phone","Phone",CFG.phone)}${ext("https://wa.me/"+CFG.phone.replace(/\D/g,""),"brands fa-whatsapp","WhatsApp",CFG.phone)}${ext("mailto:"+CFG.email,"solid fa-envelope","Email",CFG.email)}${ext("https://www.google.com/maps/search/Bahawalpur+Punjab+Pakistan","solid fa-location-dot","Address",CFG.addr)}<div class="so" style="margin:18px 0">${socials()}</div><span class="btn" data-apply tabindex="0" role="button"><i class="fa-solid fa-briefcase"></i> Apply Now</span></div><iframe class="map" title="Map" loading="lazy" src="https://maps.google.com/maps?q=Bahawalpur,Punjab,Pakistan&z=12&output=embed"></iframe></div>`);
 const socials=()=>SOC.map(s=>`<a data-ext="${s[1]}" tabindex="0" role="link" aria-label="${s[2]}"><i class="fa-brands fa-${s[0]}"></i></a>`).join("");
@@ -195,11 +179,12 @@ function render(){
 }
 function closeNav(){$("#nav").classList.remove("open")}
 $("#nav").innerHTML=NAV.map(n=>`<div class="nl">${A(n[0],n[1])}${n[2]?`<div class="dd">${n[2].map(c=>A(c[0],c[1])).join("")}</div>`:""}</div>`).join("")+`<div class="nl mob" style="display:none"><span class="btn" data-apply tabindex="0" role="button" style="margin-top:10px"><i class="fa-solid fa-briefcase"></i> Apply Now</span></div>`;
-$("#ft").innerHTML=`<div><img src="logo.png" alt="World Tech Codex" style="height:56px;margin-bottom:12px" onerror="this.outerHTML='<b class=lt>WORLD <span>TECHCODEX</span></b>'"><p>Websites, web applications and AI solutions for growing businesses.</p><div class="so" style="margin-top:16px">${socials()}</div></div>
+$("#ft").innerHTML=`<div><img src="logo.png" alt="World Tech Codex" style="height:56px;margin-bottom:12px" onerror="this.outerHTML='<b class=lt>WORLD <span>TECHCODEX</span></b>'"><p>${PG.footer}</p><div class="so" style="margin-top:16px">${socials()}</div></div>
 <div class="fl"><h4>Company</h4>${A("home","Home")}${A("about","About Us")}${A("team","Team")}${A("portfolio","Portfolio")}${A("contact","Contact")}</div>
 <div class="fl"><h4>Services</h4>${S.map(s=>A(s.id,s.t)).join("")}${A("pricing","Pricing")}</div>
 <div class="fl"><h4>Get in touch</h4><a data-ext="tel:${CFG.phone.replace(/ /g,"")}" tabindex="0" role="link"><i class="fa-solid fa-phone"></i> ${CFG.phone}</a><a data-ext="mailto:${CFG.email}" tabindex="0" role="link"><i class="fa-solid fa-envelope"></i> ${CFG.email}</a><a data-ext="https://www.google.com/maps/search/Bahawalpur+Punjab+Pakistan" tabindex="0" role="link"><i class="fa-solid fa-location-dot"></i> ${CFG.addr}</a></div>`;
 $("#yr").textContent=new Date().getFullYear();
+document.querySelectorAll('img[src="logo.png"]').forEach(i=>i.src=CFG.logo);document.querySelector('link[rel=icon]').href=CFG.favicon;
 
 /* ===== events ===== */
 function act(t){t.blur&&t.blur();
